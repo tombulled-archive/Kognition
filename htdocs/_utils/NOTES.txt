@@ -1,0 +1,204 @@
+*** NOTES: ***
+
+TODO Most recent:
+  Add new answer mode: whiteboard
+  convert whiteboard image to base64
+  handle on server
+
+TODO Next:
+    ### <DONE> :: ALREADY DONE ###
+        Finish off uploading images --done
+        Member.edit is broken, if change name: invalid rag status --fixed
+        If len(class_pin) < LEN Then it started with 0's -> therefore string !!??? || I ATTEMPTED TO FIX THIS. Problem is rooted deep
+
+        //Host name disappears when created is GENUINE BUG - fixed
+        table_images
+
+        If edit's are successful, redirect to update. --done
+
+        Host can create infinite classes consecutively -add limit? --doesn't make sense, surely will delete each time
+
+        Move Icons --done
+
+        table_images:
+            FILE_NAME
+            image_hash
+            timestamp_uploaded
+            MEMBER_HASH
+            QUESTION_HASH
+
+        Add 'timestamp_uploaded' to 'table_images'
+            And 'member_hash'?
+
+        Member cant currently retrieve submitted answers.
+
+    ### <//DONE>
+
+    ### <SAVE> :: SAVE UNTIL END ###
+        Validate, strip, check input
+
+        Add validation to functions
+
+        Add comments to code
+            And delete messy code comments
+    ### <//SAVE>
+
+    ### <BIN> :: BIN ###
+        Make $CFG allow_directory_listings --cant do: there's already an index.php
+    ### </BIN>
+
+    ### <POTENTIAL> :: POTENTIAL ###
+        Store die_if_ messages from core_lib in $CFG (and from host_lib, member_lib, ...) ??
+            replace with func() || die() ??
+        sql_make_ $where only uses AND -> maybe thats fine, can 'hack' it if have to.
+
+        Change all '_' strings to "_"?
+
+        Set SQL char-set?
+
+        Implement logging?
+
+        Upload Code To GitHub?
+            Upload Other Code Too...
+
+        Code an Admin page.
+
+        Cron - Delete in-active clients, clear log.
+
+        make /edit fail if nothing actually specified
+
+        In die_if_assigned_role check there role still exists in db
+
+        they request one thing : give them everything? | in update_() functions, just update everything
+
+        check imports are relevant and essential
+
+        Make request_failed messages part of $cfg | make all die_... see top of core_lib
+
+        Make METHOD_COOKIE for required_param etc. + METHOD_ALL
+
+        make db_lib find() use $where
+        make $where use not just '='
+
+        in die_if_... pass api=true for JSON else HTTP error
+
+        make create_default_class
+
+        Code Python API
+
+        Implement CookieScriptConsent {action: 'reject'}
+    ### <//POTENTIAL>
+
+    ### <NOTME> :: OTHERS NEED TO DO ###
+        Loading animation
+
+        Go through CSS and remove '../dir/something'
+
+        Create Proper Error Pages
+
+        Make 'find classes' page
+
+        Add 'leave class' button
+
+        Make privacy policy and 'I accept cookies'
+
+        Rename assets properly
+    ### <//NOTME>
+
+    ### <NEXT> :: DO NEXT###
+        Check DB is working across devices | Robert Scenario: Does when local?
+
+        Validate, strip, check input
+        Add validation to functions
+
+        Clean out comments
+        Remove deprecated code
+        Check file headers (this file is part of kognition...)
+        Organise code | E.g. config_lib !
+
+        Code Cron properly
+
+        Admin:
+            Code an Admin page.
+
+            Everything created by Admin disappears when their session is cleared
+                | Why should they have to need to create... only view?
+
+            Code Admin logout
+
+        Add built in survey for reviewing prototype (Feedback button)
+
+        Remove unicode cog from everywhere, image...
+
+        Upload code to one-drive
+
+        When host deleted, delete their answers (+ files?)
+            Edit cron?
+            Check this now that image table updated (on cascade)
+
+        Maybe introduce error codes.
+
+        Push to server
+
+        Potentially redirect members (and hosts?) back to dashboard if root ('/') requested.
+
+        Implement new api
+
+        Limit how many files can be uploaded, e.g. one per question? -> MAX_UPLOAD_FILES?
+
+        Make answer_images note 's'?
+
+        Member can upload 'x' many images. These images are seperate from questions.
+        If not seperate from questions
+        Once submitted, only teacher see? -no
+
+
+        Make image_lib.php?
+
+        Been messing with /api/answer/create and /scripts/image/upload
+
+        Need more theory behind image uploading.
+
+        Test sending image to /answer/create
+
+        Make $CFG->DELETE_IF_CHANGED_IP
+
+        Change const server in api.js, find way to 'get' it instead
+
+        Implement api on :
+            member/answer
+            host/index
+            host/landing
+
+        When member gets a list of their questions
+            Show which ones have already been answered
+
+        #There are no 'back' buttons!
+
+        If person has created session and GET /, display popup to redirect to /{role}/
+
+        Make $CFG->delete if changed ip | constant for debugging purposes!
+
+        New answer methods: Canvas, multiple choice.
+
+        Implement Roberts Login pages
+
+        Add (and implement) cookie_script on all pages
+    ### <//NEXT>
+
+What the app still needs:
+    Member:
+        #Ability to reset session?
+        #Ability to see public classes
+        Improved answer page:
+            Only show available options
+            Allow submit answer (implement API)
+    Host:
+        Check for joined students in background (API)
+        Actually implement host landing page
+    _Extra:
+        Implement Login/Signup pages
+        Re-Do Error pages -> not important
+        #Answer survey
+        #Remove unicode cogs
+        #Thorough testing

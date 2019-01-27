@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Caveat');
+@import url('https://fonts.googleapis.com/css?family=Yantramanav:100');
+body {
+	background: url("/assets/images/login-background.png");
+	background-size: cover;
+	margin: 0;
+}
+input {
+	width: 70%;
+	outline: none;
+	padding: 10px 11px;
+	border: 1px #aaa solid;
+	font-size: 15px;
+	background: #fff;
+	display: block;
+	margin: 20px auto;
+
+}
+#login {
+	background: #19b1ca;
+	color: #fff;
+	border: none;
+
+	transition: all 0.5s;
+}
+#login:hover {
+	background: #0ff;
+	cursor: pointer;
+}
+#container {
+	height: 50%;
+	background: rgba(0,0,0,0.3);
+	box-shadow: 5px 4px 43px #000;
+	position: absolute;
+	top: 20%;
+	left: 35%;
+	right: 35%;
+	min-height: 400px;
+	max-height: 400px;
+
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+#create {
+	position: absolute;
+	transition: all 0.25s;
+
+	margin-left: 80%;
+	margin-top: 0%;
+	background: #ffffff;
+	width: 20%;
+	height: 10%;
+	border-bottom-left-radius: 90px;
+	text-align: center;
+	line-height: 200%;
+
+	font-family: 'Caveat', cursive;
+	font-size: 20px;
+
+}
+#create:hover {
+	margin-left: 75%;
+	height: 12%;
+	width: 25%;
+	border-bottom-left-radius: 50px;
+	border-top-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	cursor: pointer;
+
+
+}
+form {
+	margin-top: 30px auto;
+	text-align: center;
+}
+b {
+	font-size: 25px;
+	color: #fff;
+	font-family: 'Yantramanav', sans-serif;
+}
+a {
+	margin-top: 200px;
+	color: #fff;
+	text-decoration: none;
+	font-family: 'Yantramanav', sans-serif;
+}
+#userImg {
+	width: 30%;
+	display: block;
+	margin-top: -10%;
+	padding-left: 36%;
+}
+
+#links {
+	margin-top: 1%;
+	margin-left: 1%;
+}
+
+#twitter {
+	position: absolute;
+	width: 5%;
+	height: 10%;
+
+	background-repeat: no-repeat;
+
+	background: url("twitter.png");
+	transition: all 0.5s;
+	background-size: 100%;
+}
+#twitter:hover {
+	background: url("twitter2.png");
+	background-size: 100%;
+	cursor: pointer;
+}

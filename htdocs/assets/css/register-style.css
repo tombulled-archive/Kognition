@@ -1,0 +1,70 @@
+body {
+	background: url("/assets/images/login-background.png");
+	background-size: cover;
+	margin: 0;
+}
+input {
+	width: 70%;
+	outline: none;
+	padding: 10px 11px;
+	border: 1px #aaa solid;
+	font-size: 15px;
+	background: #fff;
+	display: block;
+	margin: 20px auto;
+
+}
+#register {
+	background: #00FF00;
+	color: #fff;
+	border: none;
+
+	transition: all 0.4s;
+	border-radius: 5px;
+	border-style: dotted;
+}
+#register:hover {
+	background: rgba(0,255,0,0.1);
+	cursor: pointer;
+	border-radius: 10px;
+}
+#container {
+	height: 70%;
+	background: rgba(0,0,0,0.3);
+	box-shadow: 5px 4px 43px #000;
+	position: absolute;
+	top: 20%;
+	left: 35%;
+	right: 35%;
+	min-height: 550px;
+	max-height: 550px;
+
+	border-radius: 20px;
+}
+form {
+	margin-top: 30px auto;
+	text-align: center;
+}
+b {
+	font-size: 25px;
+	color: rgba(255,165,0);
+	font-family: 'Yantramanav', sans-serif;
+	border: solid;
+	border-radius: 5px;
+	padding: 5px 10px 5px 10px;
+	border-color: rgba(255,255,255,0.4);
+
+}
+a {
+	margin-top: 200px;
+	color: #fff;
+	text-decoration: none;
+	font-family: 'Yantramanav', sans-serif;
+}
+#kogImg {
+	width: 20%;
+	display: block;
+	margin-top: -10%;
+	padding-left: 40%;
+	padding-bottom: 4%;
+}

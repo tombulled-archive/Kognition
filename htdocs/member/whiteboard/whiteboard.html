@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Whiteboard</title>
+		<link rel="stylesheet" href="whiteboard.css">
+	</head>
+
+	<body onresize="calculate_wb_size()">
+		<canvas onresize="calculate_wb_size()" id="whiteboard"></canvas>
+		<div id="wb_tools">
+			<div class="tool_set">
+				<div class="colour_change" id="black" onclick="ctx.strokeStyle='#000000'"></div>
+				<div class="colour_change" id="red" onclick="ctx.strokeStyle='#FF0000'"></div>
+				<div class="colour_change" id="green" onclick="ctx.strokeStyle='#00FF00'"></div>
+				<div class="colour_change" id="blue" onclick="ctx.strokeStyle='#0000FF'"></div>
+				<div class="colour_change" id="white" onclick="ctx.strokeStyle='#FFFFFF'"></div>
+			</div>
+			<div class="slidecontainer">
+				<input type="range" min="3" max="22" value="3" class="slider" id="myRange">
+			</div>
+			<p id="output"></p>
+			<div class="tool_set">
+				<div onclick="wipe()">clear</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	//declares variables for whiteboard
+	var whiteboard = document.getElementById("whiteboard");
+	var ctx = whiteboard.getContext("2d");
+	var mouse_down = false, pos, data_URL;
+	
+	//sets canvas size to fill the page
+	calculate_wb_size();
+	
+	//sets default line specs
+	ctx.lineWidth = 3;
+	ctx.strokeStyle = "#000";
+	
+	//listeners for mouse drawing controls
+	whiteboard.addEventListener("mousedown",start_path);
+	whiteboard.addEventListener("mousemove",extend_path);
+	whiteboard.addEventListener("mouseup",end_path);
+	
+	//listeners for touch screen drawing controls
+	//whiteboard.addEventListener("touchstart",start_path);
+	//whiteboard.addEventListener("touchmove",extend_path);
+	//whiteboard.addEventListener("touchend",end_path);
+	
+	function start_path(event){
+		mouse_down = true;
+		ctx.beginPath();
+		pos = get_relative_mouse_position(whiteboard,event);
+		ctx.moveTo(pos.x,pos.y);
+	}
+	function extend_path(event){
+		if(mouse_down == true){
+			pos = get_relative_mouse_position(whiteboard,event);
+			ctx.lineTo(pos.x,pos.y);
+			ctx.stroke();
+		}
+	}		
+	function end_path(){
+		mouse_down = false;
+		ctx.closePath();
+	}
+	
+	function wipe(){
+		ctx.clearRect(0, 0, whiteboard.width, whiteboard.height);
+	}
+	
+	function get_relative_mouse_position(item,event){//item is passed in here in case the function is used for any other elements later on
+		return{
+			x: event.clientX - item.offsetLeft,
+			y: event.clientY - item.offsetTop
+		};
+	}
+	function calculate_wb_size(){
+		whiteboard.width = window.innerWidth;
+		whiteboard.height = window.innerHeight*0.9;
+		console.log("calculated");
+	}
+	
+	
+	var slider = document.getElementById("myRange");
+	var output = document.getElementById("output");
+	output.innerHTML = slider.value-2; // Display the default slider value
+	console.log(slider.value);
+	
+	// Update the current slider value (each time you drag the slider handle)
+	slider.oninput = function() {
+	  output.innerHTML = this.value-2;
+	  console.log(slider.value);
+	  ctx.lineWidth=slider.value;
+	}
+</script>

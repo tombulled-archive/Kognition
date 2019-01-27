@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400');
+
+html{
+	height: 100%;
+}
+body{
+    margin: 0;
+	/*background: url('cogs2.jpg'); '/assets/images/cogs-background.jpg'  no-repeat 50% 50%;*/
+	background: url('/assets/images/student-questions-background.jpg');
+	font-family: 'Montserrat';
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat; /* was 'repeat'*/
+
+    background-size: cover;
+}
+
+#topBar{
+	background: #404040;
+	color: #E68502;
+	font-size: 200%;
+	display: flex;
+	border-bottom: 3px solid;
+}
+
+#questions {
+	display: block;
+	background-color: rgba(255, 153, 51, 0.4);
+	margin: 10% 10% 10% 10%;
+	/*padding-bottom: 100%;*/
+	border-radius: 10px;
+	text-align: left;
+
+	list-style-type: none;
+	text-align: center;
+	color: white;
+	border-width: 5px;
+	border-color: gray;
+	border-style: double;
+
+}
+
+#questions #foo {
+	display: block;
+	background-color: white;
+	height: 0px;
+	color: rgba(0,0,0,0);
+}
+
+#questions li {
+	padding-bottom: 10px;
+	background-color: rgba(0, 0, 0, 0.2);
+	border-style: solid;
+	border-radius: 5px;
+	border-width: 1px;
+	margin: 5% 10% 2% 10%;
+}
+
+#questions > li:hover {
+	color: black;
+
+	cursor: pointer;
+
+
+}
+
+#questions > li:active {
+	color: white;
+
+}
+
+#names {
+	background-color: rgba(0,255,155,0.20);
+	font-family: 'Montserrat';
+	margin: 0% 21% 0% 21%;
+
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	float: left;
+	width: 58%;
+	display: none;
+	overflow-y: auto;
+	max-height: 370px;
+}
+
+#names ul {
+	color: black;
+	-webkit-columns: 3;
+	-moz-columns: 3;
+	list-style-type: none;
+	font-size: 19px;
+}
+
+#nameBar {
+	color: #000000;
+	background: white;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	border-radius: 5px;
+	text-align: center;
+	font-family: 'Montserrat';
+	font-size: 250%;
+
+	margin: 10% 20% 0% 20%;
+
+}
+
+#nameBar:hover {
+	cursor: pointer;
+}
+
+#classPin {
+	text-align: center;
+	font-family: 'Montserrat';
+	font-size: 750%;
+	color: black;
+	background-color: rgba(255,255,255,0.75);
+
+	border-radius: 25px;
+	border-color: gray;
+	border-style: solid;
+
+
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-top: 2.5%;
+	margin-bottom: 2.5%;
+
+	transition: all 0.5s;
+
+}
+#classPin:hover {
+	background-color: rgba(0,255,255,0.25);
+	border-color: white;
+	color: white;
+}
+
+
+
+.topBarComponent{
+	width: 25%;
+	padding: 5px 10px;
+	border-left: 3px groove #E68502;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+}
+#studentName{
+	border-left: none;
+}
+#classCode{
+	overflow: auto;
+}
+#logo{
+	width: 20px;
+	height: 20px;
+}
+
+#questionSpace{
+	margin: auto;
+	margin-top: 15px;
+	background: #cccccc;
+	padding: 10px 30px;
+	text-align: left;
+	border: 3px solid;
+	border-radius: 5px;
+	width: 76%;
+	overflow: auto;
+}
+
+#answerBox{
+	display: flex;
+	margin: auto;
+	margin-top: 15px;
+	margin-bottom: 70px; /* Added */
+	width: 80%;
+	text-align: center;
+	background: white;
+	border: 3px solid;
+	border-radius: 5px;
+	height: 69%;
+}
+#toolBar{
+	width: 105px;
+	height: 100%;
+	background: #404040;
+}
+.toolbarPanel{
+	width: 100%;
+	border-bottom: 3px groove grey;
+}
+.toolbarPanelDescriptor{
+	font-size: 10px;
+	text-decoration: underline;
+	color: white;
+}
+.toolbarButton{
+	width: 70px;
+	height: 20px;
+	border: 3px solid;
+	border-radius: 90px;
+	margin: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	transition: all 0.5s;
+	padding-top: 7px;
+	color: white;
+	text-decoration: none;
+}
+.toolbarButton:hover{
+	cursor: pointer;
+}
+.inputMethodButton{
+	background: #003366;
+}
+.inputMethodButton:hover{
+	background: #0066cc
+}
+.inputMethodButton.active{
+	background: #3399ff;
+}
+#submitAnswerButton{
+	background: #cc5200;
+}
+#submitAnswerButton:hover{
+	background: #ff8c1a
+}
+.responseArea{
+	padding: 10px;
+	border-left: 3px solid;
+	font-size: 20px;
+}
+
+#colourBar{
+	display: flex;
+	border-top: 3px solid;
+	height: 5%;
+	width: 100%;
+	bottom: 0;
+	position: fixed;
+}
+#colourBarRed{
+	background: red;
+}
+#colourBarAmber{
+	background: #ffd11a;
+}
+#colourBarGreen{
+	background: green;
+	border-left: none;
+}
+.colourBarComponent{
+	width: 33.333%;
+	border-left: 2px solid;
+}

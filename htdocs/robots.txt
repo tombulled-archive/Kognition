@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /lib/
+Disallow: /api/
+Disallow: /plugins/
+Disallow: /admin/

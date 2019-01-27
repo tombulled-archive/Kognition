@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Yantramanav:100');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400');
+
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.main {
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	background: url('../images/maintenance.png') no-repeat 50% 50%;
+	display: table;
+	top: 0;
+	/*background-size: cover;*/
+	background-size: 100% 100%;
+}

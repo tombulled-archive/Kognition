@@ -1,0 +1,24 @@
+#awwapp_shortcode_dialog {
+  padding: 10px;
+  display: none;
+}
+
+.awwapp-buttonbox {
+  text-align: center;
+  margin: 10px;
+}
+
+#awwapp_shortcode_dialog input[name=awwapp_cancel] {
+  margin-left: 10px;
+}
+
+#awwapp_shortcode_dialog .form-table {
+  margin: 5px;
+  width: 100%;
+}
+
+#awwapp_shortcode_dialog .form-table th {
+  width: 120px;
+  vertical-align: top;
+  padding-top: 13px;
+}
