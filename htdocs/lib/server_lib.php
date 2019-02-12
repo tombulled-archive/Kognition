@@ -582,7 +582,9 @@ function member_in_class($class, $member)
 
 function handle_lost_session()
 {
-    if ($_SESSION[SESSION_LOST])
+    return true;
+
+    /*if ($_SESSION[SESSION_LOST])
     {
         $obj = get_obj_from_ip(REQUEST_IP);
         $class = $obj->class ?? null;
@@ -604,7 +606,7 @@ function handle_lost_session()
         $_SESSION[SESSION_LOST] = false;
     }
 
-    return true; //check correct
+    return true; //check correct*/
 }
 
 function register_question($question)

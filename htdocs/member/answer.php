@@ -53,6 +53,7 @@ define('TMP_QUESTION_HASH', $question->question_hash);
         <script type="text/javascript" src="<?php echo $CFG->url_plugins_dir.'tinymce/tinymce.min.js' ?>"></script>
         <script type="text/javascript" src="<?php echo $CFG->url_plugins_dir.'tinymce/init-tinymce.js' ?>"></script>
         <script src="<?php echo $CFG->url_assets_dir.'js/api.js' ?>" type="text/javascript"></script>
+        <script src="<?php echo $CFG->url_assets_dir.'js/underscore.js' ?>" type="text/javascript"></script>
         <style>
             /* ADD ME TO .CSS FILE */
             /*Container, container body, iframe*/
@@ -118,7 +119,7 @@ define('TMP_QUESTION_HASH', $question->question_hash);
 				<div id="inputMethodPanel" class="toolbarPanel">
 					<p class="toolbarPanelDescriptor">Input Methods</p>
 					<div id="textButton" class="inputMethodButton toolbarButton" onclick="change_input_method(event, 'textResponseArea')">Text</div>
-					<div id="whiteboardButton" class="inputMethodButton toolbarButton" onclick="change_input_method(event, 'whiteboardResponseArea')">Board</div>
+					<div id="whiteboardButton" class="inputMethodButton toolbarButton" onclick="//change_input_method(event, 'whiteboardResponseArea')">Board</div>
 				</div>
                 <div class="toolbarButton" id="submitAnswerButton" onclick="submit_answer()">Submit</div>
 			</div>
@@ -139,9 +140,52 @@ define('TMP_QUESTION_HASH', $question->question_hash);
 
             var AnswerObj = new Answer(MemberObj.hash, QuestionObj.question_hash);
 
+            //tinymce.get('textResponseAreaText').focus();
+
 			function main(){
 				document.getElementById("textButton").click();//activates text input by default
+
+                setTimeout(insert_current_answer, 2000);
+
+                //setTimeout(tinymce.get('textResponseAreaText').focus, 2000);
 			}
+
+            function insert_current_answer()
+            {
+                QuestionObj.get_answer(MemberObj.hash, callback=on_get_answer)
+            }
+
+            function on_get_answer(api_out)
+            {
+                console.log("on_get_answer");
+                console.log(api_out);
+
+                if (!api_out['success'])
+                {
+                    return;
+                }
+
+                var answer_hash = api_out['answer']['answer_hash'];
+
+                console.log("answer hash: " + answer_hash);
+
+                AnswerObj.answer_hash = answer_hash;
+
+                console.log("answer hash: " + AnswerObj.answer_hash);
+
+                var answer_tinymce = api_out['answer']['answer_tinymce'];
+
+                //console.log(answer_tinymce);
+
+                answer_tinymce = _.unescape(answer_tinymce);
+
+                //console.log(answer_tinymce);
+
+                //tinymce.activeEditor.setContent(html, {format: 'raw'});
+                tinymce.get('textResponseAreaText').setContent(answer_tinymce, {format: 'raw'});
+
+                //console.log('INSERTED');
+            }
 
             function submit_answer(answer=null)
             {
@@ -160,7 +204,15 @@ define('TMP_QUESTION_HASH', $question->question_hash);
 
                     AnswerObj.answer_tinymce = answer_tinymce;
 
-                    AnswerObj.create(function(api_out, answer=AnswerObj){answer._on_update(api_out); on_answered(api_out);});
+                    console.log("answer hash: " + AnswerObj.answer_hash);
+
+                    if (AnswerObj.answer_hash == null)
+                    {
+                        AnswerObj.create(function(api_out, answer=AnswerObj){answer._on_update(api_out); on_answered(api_out);});
+                    }
+                    else {
+                        AnswerObj.edit(answer_tinymce=answer_tinymce, function(api_out, answer=AnswerObj){answer._on_update(api_out); on_answered(api_out);});
+                    }
                 }
 
                 /*
@@ -178,7 +230,7 @@ define('TMP_QUESTION_HASH', $question->question_hash);
 
                 if (! AnswerObj.answer_hash)
                 {
-                    alert("Answer creation failed: " + api_out["message"]);
+                    alert("Answer failed to send: " + api_out["message"]);
                 }
                 else
                 {
@@ -189,6 +241,8 @@ define('TMP_QUESTION_HASH', $question->question_hash);
 
 			function change_input_method(event, responseAreaID)
 			{
+                //return; // for now: Lock them into Text-mode
+
 				var i, inputMethodButtonArray, responseAreaArray;
 
 				//removes current input method from page

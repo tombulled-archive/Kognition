@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 // This file is part of Kognition
 //
@@ -52,6 +52,11 @@ define('TMP_CLASS_PIN', $_SESSION[WHOAMI]->class->class_pin);
         MemberObj.hash = Member_hash;
         MemberObj.update();
     </script>
+    <style>
+    	ul {
+       	    list-style-type: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -71,6 +76,7 @@ define('TMP_CLASS_PIN', $_SESSION[WHOAMI]->class->class_pin);
 			<!--ggg-->
 		</div>
 		<ul>
+		<ul id="questions-list">
 		</ul>
 	</div>
 
@@ -103,8 +109,10 @@ define('TMP_CLASS_PIN', $_SESSION[WHOAMI]->class->class_pin);
 
     function populateQuestions(api_out)
     {
-        console.log(api_out);
+        //console.log(api_out);
         var questions = api_out['questions'];
+
+        document.getElementById("questions-list").innerHTML = '';
 
         for (var question_index in questions)
         {
@@ -122,12 +130,14 @@ define('TMP_CLASS_PIN', $_SESSION[WHOAMI]->class->class_pin);
 			};
 			var textnode = document.createTextNode(questions[question_index]['question_text']);
 			node.appendChild(textnode);
-			document.getElementById("questions").appendChild(node);
+			document.getElementById("questions-list").appendChild(node);
         }
     }
 	//generateList();
 
     MemberObj.get_questions(populateQuestions);
+    
+    setInterval(function(){MemberObj.get_questions(populateQuestions);}, 3000);
 </script>
 
 </html>

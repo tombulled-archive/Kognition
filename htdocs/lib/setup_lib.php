@@ -83,12 +83,14 @@ function ip_has_obj($ip)
 
 function check_lost_session()
 {
-    $has_obj = ip_has_obj(REQUEST_IP);
+    return;
+
+    /*$has_obj = ip_has_obj(REQUEST_IP);
 
     if ($has_obj && is_null($_SESSION[WHOAMI]))
     {
         $_SESSION[SESSION_LOST] = true;
-    }
+    }*/
 }
 
 function kill_session()

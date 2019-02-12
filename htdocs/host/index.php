@@ -36,32 +36,34 @@ define('TMP_CLASS_PIN', $_SESSION[WHOAMI]->class->class_pin);
 <html>
 <link href="<?php echo $CFG->url_assets_dir.'css/host-page.css' ?>" rel="stylesheet" type="text/css"/>
 <script src="<?php echo $CFG->url_assets_dir.'js/api.js' ?>" type="text/javascript"></script>
+<script src="<?php echo $CFG->url_assets_dir.'js/underscore.js' ?>" type="text/javascript"></script>
 <head>
 <title>Kognition Teacher View</title>
 </head>
 <body>
 <div id = "HostPageTopBar">
 			<div id="className"  class="HostPageTopBarComponent">Class: <?php echo TMP_CLASS_NAME; ?></div>
-			<div id="classCode" class="HostPageTopBarComponent">Code: <?php echo TMP_CLASS_PIN; ?></div>
-			<div id="Option1" class="HostPageTopBarComponent" onclick="popup('Option1Pop')"><img id="Option1Image" src="Option1Icon.png"></div>
+			<div id="classCode" class="HostPageTopBarComponent" style="overflow:hidden;">Code: <?php echo TMP_CLASS_PIN; ?></div>
+			<div id="Option1" class="HostPageTopBarComponent" onclick="popup('Option1Pop')"><!--<img id="Option1Image" src="Option1Icon.png">--></div>
 			<div class="popup" id="Option1Pop"></div>
-			<div id="Option2" class="HostPageTopBarComponent" onclick="Option2Funtion()"><img id="Option2Image" src="Option2Icon.png">
+			<div id="Option2" class="HostPageTopBarComponent" onclick="Option2Funtion()"><!--<img id="Option2Image" src="Option2Icon.png">-->
 				<!--<span class="Option2Pop" id="Option2PopId"></span>-->
 			</div>
-			<div id="Option3" class="HostPageTopBarComponent" onclick="Option3Funtion()"><img id="Option3Image" src="Option3Icon.png">
+			<div id="Option3" class="HostPageTopBarComponent" onclick="Option3Funtion()"><!--<img id="Option3Image" src="Option3Icon.png">-->
 				<!--<span class="Option3Pop" id="Option3PopId"></span>-->
 			</div>
-			<div id="appName" class="HostPageTopBarComponent">
-				K
+			<!--<div id="appName" class="HostPageTopBarComponent">-->
+				<!--K-->
 				<!--<img id="logo"
 						 src="https://www.cobry.co.uk/wp-content/uploads/2018/07/Cog.png"
 						 style="
 						 		height: 50px;
 								width: 50px;
-								display: inline"
+								display: inline;"
 				>--> <!-- KOG ICON HERE -->
-				gnition
-		  </div>
+				<!--gnition-->
+		  <!--</div>-->
+          <div id="appName" class="HostPageTopBarComponent">K<p style="display: inline; font-size: 80%">⛭</p>gnition</div>
 
 </div>
 <div id ="MainArea">
@@ -83,10 +85,15 @@ define('TMP_CLASS_PIN', $_SESSION[WHOAMI]->class->class_pin);
 			<div id = "UpperCurrentlyShownTitle"></div>
 		</div>
 		<div id = "MidCurrentlyShown">
-			<div id = "MidCurrentlyShownTitle">Question: </div>
-			<div id = "MidCurrentlyQuestion"><!--_______test_______--></div>
+			<div id = "MidCurrentlyShownTitle">Question: <b><p style="display:inline;" id="current_question_text"></p></b></div>
+			<div id = "MidCurrentlyQuestion">Answers:</div>
+            <div id="current_question_answers_area">
+                <ul id="current_question_answers_list">
+                </ul>
+            </div>
 
 		</div>
+        <div id="current_answer_output" style="margin-left: 10px; margin-top: 10px;"></div>
 
 	</div>
 	<div id= "HostRightArea">
@@ -178,15 +185,93 @@ HostObj.update(show_members=true, function(api_out, host=HostObj){host._on_updat
         {
             var question = HostObj.questions[index];
 
-            var node = document.createElement("LI");
+            var node_li = document.createElement("LI");
+            var node_a = document.createElement("A");
 
             console.log(question);
 
 			var textnode = document.createTextNode(question['question_name']);
-			node.appendChild(textnode);
-			document.getElementById("HostLowerUpperRightAreaQuestionList").appendChild(node);
+			node_a.appendChild(textnode);
+            node_li.appendChild(node_a);
+
+            node_a['href'] = '#';
+            node_a.onclick = function(event, Question=question){update_focused_question(Question);};
+
+			document.getElementById("HostLowerUpperRightAreaQuestionList").appendChild(node_li);
         }
 
+    }
+
+    function update_focused_question(question)
+    {
+        //console.log('in update_focused_question');
+        //console.log(event);
+        //console.log('HERE:');
+        //console.log(question);
+
+        // UPDATE CENTRE HERE
+
+        var question_hash = question['question_hash'];
+        var question_text = question['question_text'];
+
+        HostObj.get_answers(question_hash, function(api_out, Question=question){on_get_answers(api_out)});
+
+        var node_current_question_text = document.getElementById('current_question_text');
+        var node_text = document.createTextNode(question_text);
+
+        node_current_question_text.appendChild(node_text);
+    }
+
+    function on_get_answers(api_out)
+    {
+        //console.log('On get answers');
+        //console.log(api_out);
+        //console.log('');
+
+        var answers = api_out['answers'];
+
+        var ul = document.getElementById("current_question_answers_list");
+
+        for (answer of answers)
+        {
+            var answer_answer = answer['answer'];
+            var answer_member = answer['member'];
+
+            console.log(answer);
+
+            var member_name = answer_member['member_name'];
+            var answer_tinymce = answer_answer['answer_tinymce'];
+
+            var node_li = document.createElement("LI");
+            var node_a = document.createElement('A');
+            var node_text = document.createTextNode(member_name);
+
+            node_a['href'] = '#';
+            node_a.onclick = function(event, Answer=answer){on_show_answer(answer);};
+
+            node_a.appendChild(node_text);
+            node_li.appendChild(node_a);
+
+            ul.appendChild(node_li);
+        }
+
+        console.log('');
+    }
+
+    function on_show_answer(answer)
+    {
+        console.log('on_show_answer');
+        console.log(answer);
+        console.log('');
+
+        var answer_answer = answer['answer'];
+
+        var answer_tinymce = answer_answer['answer_tinymce'];
+        var answer_tinymce_decoded = _.unescape(answer_tinymce);
+
+        var div_output = document.getElementById('current_answer_output');
+
+        div_output.innerHTML = answer_tinymce_decoded;
     }
 
     function getCookie(name) {
@@ -207,7 +292,7 @@ HostObj.update(show_members=true, function(api_out, host=HostObj){host._on_updat
 
         console.log(question_text);
 
-        var QuestionObj = new Question(null, host_hash, question_text, class_pin, ANSWER_MODE_TINYMCE, "New Question", false);
+        var QuestionObj = new Question(null, host_hash, question_text, class_pin, ANSWER_MODE_TINYMCE, question_text, false);
 
         var callback = function (api_out)
         {
@@ -220,8 +305,11 @@ HostObj.update(show_members=true, function(api_out, host=HostObj){host._on_updat
         QuestionObj.create(callback);
     }
 
-    setInterval(showMembers, 2 * 1000);
-    setInterval(showQuestions, 2 * 1000);
+    showMembers();
+    showQuestions();
+
+    setInterval(showMembers, 4 * 1000);
+    setInterval(showQuestions, 4 * 1000);
 </script>
 
 </body>

@@ -1,9 +1,28 @@
 *** NOTES: ***
 
 TODO Most recent:
-  Add new answer mode: whiteboard
-  convert whiteboard image to base64
-  handle on server
+  v2: Add new answer mode: whiteboard
+  v2: convert whiteboard image to base64
+  v2: handle image data on server
+  Store sent answers and re-insert into entries.
+  Disable whiteboard option in answer.php
+  Provide way for member to retrieve their answer
+  Show which questions a member has already answered
+  Redirect member/host back to their dashboard if request /
+
+  TODO:
+ 	Stop server being reliant on IP's. Get object by assosciation with Cookies, not IP.
+
+ HOWTO:
+ 	No way of knowing if session is lost, just rely on cron
+
+ 	Fix check_lost_session (setup): Just return for now
+ 	Note handle_lost_session: Just return for now? - maybe keep, it shouldnt be needed but...
+ 	Throughout: Keep $_SESSION[WHOAMI]
+
+ 	Check usage of: $_SESSION[IP_ADDRESS]
+
+ 	Set WHOAMI when registered. -if null, handle. -drop links to IP
 
 TODO Next:
     ### <DONE> :: ALREADY DONE ###

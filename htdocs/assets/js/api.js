@@ -266,6 +266,10 @@ class Question{
 		this._api_last = null;
 	}
 
+	get_answer(member_hash, callback=null)
+	{
+		xml_get_request("api/question/get_answer", {MEMBER_HASH: member_hash, QUESTION_HASH: this.question_hash}, callback);
+	}
 
 	create(callback=null){
 		//xml_get_request("api/question/create", {HOST_HASH: this.host_hash, QUESTION_TEXT: this.question_text, ANSWER_MODE: this.answer_mode, QUESTION_NAME: this.name}, this._on_create, callback);
@@ -425,7 +429,7 @@ class Answer{
 
 
 	delete_answer(member_hash, callback=null){
-		xml_get_request("api/answer/delete", {ANSWER_HASH: this.hash, MEMBER_HASH: member_hash}, this._on_delete_answer, callback);
+		xml_get_request("api/answer/delete", {ANSWER_HASH: this.answer_hash, MEMBER_HASH: member_hash}, this._on_delete_answer, callback);
 	}
 
 	_on_delete_answer(data){
@@ -439,7 +443,7 @@ class Answer{
 
 
 	edit(answer_tinymce=null, callback=null){
-		xml_get_request("api/answer/edit", {ANSWER_HASH: this.hash, MEMBER_HASH: this.member_hash, ANSWER_TINYMCE: answer_tinymce}, this._on_edit, callback);
+		xml_get_request("api/answer/edit", {ANSWER_HASH: this.answer_hash, MEMBER_HASH: this.member_hash, ANSWER_TINYMCE: answer_tinymce}, this._on_update, callback);
 	}
 
 	_on_edit(data){
@@ -452,7 +456,7 @@ class Answer{
 
 
 	update(member_hash, callback=null){
-		xml_get_request("api/answer/update", {ANSWER_HASH: this.hash, MEMBER_HASH: member_hash}, this._on_update, callback);
+		xml_get_request("api/answer/update", {ANSWER_HASH: this.answer_hash, MEMBER_HASH: member_hash}, this._on_update, callback);
 	}
 
 	_on_update(data){
@@ -466,6 +470,6 @@ class Answer{
 			this.answer_hash=data['answer']['answer_hash'];
 		}
 
-		console.log(this);
+		//console.log(this);
 	}
 }
