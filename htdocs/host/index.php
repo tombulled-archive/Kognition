@@ -58,7 +58,7 @@ define('TMP_CLASS_PIN', $_SESSION[WHOAMI]->class->class_pin);
 						 style="
 						 		height: 50px;
 								width: 50px;
-								display: inline;"
+								display: inline"
 				>--> <!-- KOG ICON HERE -->
 				gnition
 		  </div>
