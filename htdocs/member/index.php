@@ -75,7 +75,6 @@ define('TMP_CLASS_PIN', $_SESSION[WHOAMI]->class->class_pin);
 		<div id="foo"> <!-- rename me -->
 			<!--ggg-->
 		</div>
-		<ul>
 		<ul id="questions-list">
 		</ul>
 	</div>

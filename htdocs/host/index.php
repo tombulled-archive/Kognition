@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 // This file is part of Kognition
 //
@@ -155,6 +155,8 @@ HostObj.update(show_members=true, function(api_out, host=HostObj){host._on_updat
 
         HostObj.update(show_members=true, function(api_out, host=HostObj){host._on_update(api_out);});
 
+        //document.getElementById("HostLeftAreaStudents")
+
         for (index = 0; index < HostObj.members.length; index ++)
         {
             var member = HostObj.members[index];
@@ -181,6 +183,8 @@ HostObj.update(show_members=true, function(api_out, host=HostObj){host._on_updat
         //HostObj.update(show_members=true, function(api_out, host=HostObj){host._on_update(api_out);});
         HostObj.get_questions(function(api_out, host=HostObj){host._on_get_questions(api_out);});
 
+        //document.getElementById("HostLowerUpperRightAreaQuestionList").innerHTML = '';
+
         for (index = 0; index < HostObj.questions.length; index ++)
         {
             var question = HostObj.questions[index];
@@ -188,7 +192,7 @@ HostObj.update(show_members=true, function(api_out, host=HostObj){host._on_updat
             var node_li = document.createElement("LI");
             var node_a = document.createElement("A");
 
-            console.log(question);
+            //console.log(question);
 
 			var textnode = document.createTextNode(question['question_name']);
 			node_a.appendChild(textnode);
@@ -219,6 +223,8 @@ HostObj.update(show_members=true, function(api_out, host=HostObj){host._on_updat
         var node_current_question_text = document.getElementById('current_question_text');
         var node_text = document.createTextNode(question_text);
 
+        node_current_question_text.innerHTML = '';
+
         node_current_question_text.appendChild(node_text);
     }
 
@@ -232,12 +238,14 @@ HostObj.update(show_members=true, function(api_out, host=HostObj){host._on_updat
 
         var ul = document.getElementById("current_question_answers_list");
 
+        ul.innerHTML = '';
+
         for (answer of answers)
         {
             var answer_answer = answer['answer'];
             var answer_member = answer['member'];
 
-            console.log(answer);
+            //console.log(answer);
 
             var member_name = answer_member['member_name'];
             var answer_tinymce = answer_answer['answer_tinymce'];
@@ -255,14 +263,16 @@ HostObj.update(show_members=true, function(api_out, host=HostObj){host._on_updat
             ul.appendChild(node_li);
         }
 
-        console.log('');
+        //console.log('');
     }
 
     function on_show_answer(answer)
     {
-        console.log('on_show_answer');
-        console.log(answer);
-        console.log('');
+        //console.log('on_show_answer');
+        //console.log(answer);
+        //console.log('');
+
+        //div_output.innerHTML = '';
 
         var answer_answer = answer['answer'];
 
@@ -290,7 +300,7 @@ HostObj.update(show_members=true, function(api_out, host=HostObj){host._on_updat
 
         var question_text = text_area.value;
 
-        console.log(question_text);
+        //console.log(question_text);
 
         var QuestionObj = new Question(null, host_hash, question_text, class_pin, ANSWER_MODE_TINYMCE, question_text, false);
 
