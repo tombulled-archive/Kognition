@@ -28,6 +28,7 @@ die_if_changed_ip();
 
 handle_lost_session();
 
+
 $host_hash = required_param(HOST_HASH, PARAM_STR, METHOD_GET);
 $show_members = optional_param(SHOW_MEMBERS, PARAM_BOOL, METHOD_GET) ?? DEFAULT_UPDATE_SHOW_MEMBERS;
 

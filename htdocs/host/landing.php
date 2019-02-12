@@ -105,7 +105,7 @@ HostObj.update(show_members=true, function(api_out, host=HostObj){host._on_updat
 
         HostObj.hash = host_hash;
 
-        console.log(HostObj.members);
+        //console.log(HostObj.members);
 
         var myNode = document.getElementById("students");
         while (myNode.firstChild) {

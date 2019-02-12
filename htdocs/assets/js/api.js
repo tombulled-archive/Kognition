@@ -20,7 +20,7 @@ const QUESTION_NAME="question_name";
 const ANSWER_MODE="answer_mode";
 const ANSWER_HASH="answer_hash";
 const TOTAL="total";
-const DEBUG = true;
+const DEBUG = false;
 
 const ANSWER_MODE_TINYMCE="tinymce";
 
@@ -42,7 +42,7 @@ function xml_get_request(end_point, params, ...callbacks){
 		if (this.readyState == 4 && this.status == 200) {
 			for (var callback in callbacks)
 			{
-				console.log(callbacks[callback]);
+				//console.log(callbacks[callback]);
 				if (callbacks[callback])
 				{
 					callbacks[callback](JSON.parse(xhttp.responseText));

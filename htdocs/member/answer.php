@@ -157,8 +157,8 @@ define('TMP_QUESTION_HASH', $question->question_hash);
 
             function on_get_answer(api_out)
             {
-                console.log("on_get_answer");
-                console.log(api_out);
+                //console.log("on_get_answer");
+                //console.log(api_out);
 
                 if (!api_out['success'])
                 {
@@ -167,11 +167,11 @@ define('TMP_QUESTION_HASH', $question->question_hash);
 
                 var answer_hash = api_out['answer']['answer_hash'];
 
-                console.log("answer hash: " + answer_hash);
+                //console.log("answer hash: " + answer_hash);
 
                 AnswerObj.answer_hash = answer_hash;
 
-                console.log("answer hash: " + AnswerObj.answer_hash);
+                //console.log("answer hash: " + AnswerObj.answer_hash);
 
                 var answer_tinymce = api_out['answer']['answer_tinymce'];
 
@@ -204,7 +204,7 @@ define('TMP_QUESTION_HASH', $question->question_hash);
 
                     AnswerObj.answer_tinymce = answer_tinymce;
 
-                    console.log("answer hash: " + AnswerObj.answer_hash);
+                    //console.log("answer hash: " + AnswerObj.answer_hash);
 
                     if (AnswerObj.answer_hash == null)
                     {
@@ -226,7 +226,7 @@ define('TMP_QUESTION_HASH', $question->question_hash);
 
                 //var AnswerObj = answer;
 
-                console.log(AnswerObj);
+                //console.log(AnswerObj);
 
                 if (! AnswerObj.answer_hash)
                 {

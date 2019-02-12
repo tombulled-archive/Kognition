@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 // This file is part of Kognition
 //
@@ -198,8 +198,13 @@ HostObj.update(show_members=true, function(api_out, host=HostObj){host._on_updat
 			node_a.appendChild(textnode);
             node_li.appendChild(node_a);
 
+            var wrapper = function(question){return function(event){update_focused_question(question)};};
+
             node_a['href'] = '#';
-            node_a.onclick = function(event, Question=question){update_focused_question(Question);};
+            //node_a.setAttribute('data-arg1', question);
+            //node_a.onclick = function(event, Question=question){update_focused_question(Question);};
+            //node_a.onclick = function(event){update_focused_question(event.target.getAttribute('question'));};
+            node_a.onclick = wrapper(question);
 
 			document.getElementById("HostLowerUpperRightAreaQuestionList").appendChild(node_li);
         }
@@ -212,6 +217,11 @@ HostObj.update(show_members=true, function(api_out, host=HostObj){host._on_updat
         //console.log(event);
         //console.log('HERE:');
         //console.log(question);
+        //console.log('');
+
+        var div_output = document.getElementById('current_answer_output');
+
+        div_output.innerHTML = '';
 
         // UPDATE CENTRE HERE
 

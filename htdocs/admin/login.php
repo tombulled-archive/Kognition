@@ -176,7 +176,7 @@ span.psw {
 
     function on_login(api_out)
     {
-        console.log(api_out);
+        //console.log(api_out);
 
         if (!api_out['success'])
         {

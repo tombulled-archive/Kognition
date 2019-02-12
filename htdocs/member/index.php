@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 // This file is part of Kognition
 //
@@ -53,8 +53,8 @@ define('TMP_CLASS_PIN', $_SESSION[WHOAMI]->class->class_pin);
         MemberObj.update();
     </script>
     <style>
-    	ul {
-       	    list-style-type: none;
+    ul {
+          list-style-type: none;
         }
     </style>
 </head>
