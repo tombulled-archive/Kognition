@@ -18,7 +18,7 @@ Enabling less confident students to ask teachers for help.
 
 ## Use Kognition
 You must add your MySQL Server Credentials in `/lib/config_lib.php`.
-This is not necessary if the code is hosted on a default XAMPP server.
+This is not necessary if the code is hosted on a default [XAMPP server](https://www.apachefriends.org/index.html).
 
 -------------------
 
