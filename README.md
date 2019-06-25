@@ -9,3 +9,9 @@ Enabling less confident students to ask teachers for help.
 #### **From:** [Brighton, Hove & Sussex Sixth Form College, Brighton and Hove](https://www.bhasvic.ac.uk/)
 #### **Category:** [Future Tech Leaders](https://dashboard.appsforgood.org/public/awards/2018/categories/future-tech-leaders)
 #### **Powered By:** [Thomson Reuters](https://www.thomsonreuters.com/en.html)
+
+-------------------
+
+## Use Kognition
+You must add your MySQL Server Credentials in `/lib/config_lib.php`.
+This is not necessary if the code is hosted on a default XAMPP server.
