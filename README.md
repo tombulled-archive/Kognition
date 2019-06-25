@@ -24,4 +24,5 @@ This is not necessary if the code is hosted on a default XAMPP server.
 
 ## Demo Kognition
 Live Demo: http://kognition.ihostfull.com/
+
 Class Pin: 111111
