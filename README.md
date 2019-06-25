@@ -10,5 +10,4 @@ Team: Edward, Thomas, Robert, Daniel
 From: [Brighton, Hove & Sussex Sixth Form College, Brighton and Hove](https://www.bhasvic.ac.uk/)
 
 Category: [Future Tech Leaders](https://dashboard.appsforgood.org/public/awards/2018/categories/future-tech-leaders)
-
 Powered By: [Thomson Reuters](https://www.thomsonreuters.com/en.html)
