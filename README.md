@@ -5,6 +5,8 @@ Enabling less confident students to ask teachers for help.
 
 *Kognition was the [winner](https://dashboard.appsforgood.org/public/awards/2018/kognition) of the [Apps for Good](https://www.appsforgood.org/) - [Future Tech Leaders Category](https://dashboard.appsforgood.org/public/awards/2018/categories/future-tech-leaders) - [2018](https://dashboard.appsforgood.org/public/awards/2018/winners)*
 
+-------------------
+
 ## About Kognition
 
 #### **Team:** [Edward](https://github.com/EdwardWeatherley), [Thomas](https://github.com/tombulled), [Robert](https://github.com/RobertRaye), [Daniel](https://github.com/Robog8r)
